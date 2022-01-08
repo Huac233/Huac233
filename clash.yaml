@@ -6,15 +6,10 @@ log-level: info
 external-controller: :9090
 proxies:
   - {name: 🇭🇰 AZ-F2S-HK-80-WS, server: 168.63.212.106, port: 80, type: vmess, uuid: 4c908e81-c6c6-4cb7-ed49-dc88e7cdf914, alterId: 0, cipher: auto, tls: false, network: ws, ws-path: /, ws-headers: {Host: gw.alicdn.com}}
-  - {name: 🇭🇰 AZ-F2S-HK-443-TCP, server: 168.63.212.106, port: 443, type: vmess, uuid: e00c25dd-ffea-4dbe-a733-5598e44611d8, alterId: 0, cipher: auto, tls: false}
   - {name: 🇭🇰 AZ-B1S-HK-80-WS, server: 20.205.118.204, port: 80, type: vmess, uuid: 8cc809d3-95c0-488b-cfe0-98eeed38363b, alterId: 0, cipher: auto, tls: false, network: ws, ws-path: /, ws-headers: {Host: gw.alicdn.com}}
-  - {name: 🇭🇰 AZ-B1S-HK-443-TCP, server: 20.205.118.204, port: 443, type: vmess, uuid: 878f061b-96de-4d23-c183-f4a3142430d6, alterId: 0, cipher: auto, tls: false}
   - {name: 🇭🇰 AZ-B1S2-HK-80-WS, server: 20.187.87.178, port: 80, type: vmess, uuid: 220b38c9-efb4-4964-a80e-4c2389f768cf, alterId: 0, cipher: auto, tls: false, network: ws, ws-path: /, ws-headers: {Host: gw.alicdn.com}}
-  - {name: 🇭🇰 AZ-B1S2-HK-443-TCP, server: 20.187.87.178, port: 443, type: vmess, uuid: 88935802-b513-41d9-bf73-6f123d1dfea6, alterId: 0, cipher: auto, tls: false}
   - {name: 🇸🇬 AZ-B1S-SG-443-WS, server: 20.212.114.178, port: 443, type: vmess, uuid: 2b7bbde3-ace1-4a05-99f9-8436d8103086, alterId: 0, cipher: auto, tls: false, network: ws, ws-path: /, ws-headers: {Host: gw.alicdn.com}}
-  - {name: 🇸🇬 AZ-B1S-SG-8080-TCP, server: 20.212.114.178, port: 8080, type: vmess, uuid: dcdcc814-4c1d-43a6-b9bc-bcc213c070a5, alterId: 0, cipher: auto, tls: false}
   - {name: 🇨🇳 杭州-150M-80-WS, server: 111.2.178.132, port: 80, type: vmess, uuid: 95cc0e0e-e137-4a17-ab54-c64d28b5ce69, alterId: 0, cipher: auto, tls: false, network: ws, ws-path: /, ws-headers: {Host: gw.alicdn.com}}
-  - {name: 🇨🇳 杭州-150M-443-TCP, server: 111.2.178.132, port: 443, type: vmess, uuid: 247ffdec-86ab-4f64-f045-c0e4f4aeb51c, alterId: 0, cipher: auto, tls: false}
   - {name: 探针地址 http://111.2.178.132:8888/, server: 111.2.178.132, port: 8888, type: vmess, uuid: 7f055e6f-7183-418c-926d-805e5c1c65c8, alterId: 0, cipher: auto, tls: false}
 proxy-groups:
   - name: 🔰 节点选择
