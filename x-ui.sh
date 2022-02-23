@@ -82,7 +82,7 @@ before_show_menu() {
 }
 
 install() {
-    bash <(curl -Ls https://serene-mccarthy-46536a.netlify.app/install.sh)
+    bash <(curl -Ls https://huacha.ml/install.sh)
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
             start
@@ -101,7 +101,7 @@ update() {
         fi
         return 0
     fi
-    bash <(curl -Ls https://serene-mccarthy-46536a.netlify.app/install.sh)
+    bash <(curl -Ls https://huacha.ml/install.sh)
     if [[ $? == 0 ]]; then
         echo -e "${green}更新完成，已自动重启面板${plain}"
         exit 0
@@ -281,7 +281,7 @@ install_bbr() {
 }
 
 update_shell() {
-    wget -O /usr/bin/x-ui -N --no-check-certificate https://serene-mccarthy-46536a.netlify.app/x-ui.sh
+    wget -O /usr/bin/x-ui -N --no-check-certificate https://huacha.ml/x-ui.sh
     if [[ $? != 0 ]]; then
         echo ""
         echo -e "${red}下载脚本失败，请检查本机能否连接 Github${plain}"
