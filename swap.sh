@@ -27,7 +27,7 @@ set_swap(){
 	sed -i "s/ResourceDisk.SwapSizeMB=0/ResourceDisk.SwapSizeMB=$swapsize/g" /etc/waagent.conf
 	service waagent restart
 	for ((i=60;i>0;i--)) do
-	echo -e "\033[31m 倒计时${i}秒 \033[0m" # 设置字体颜色为红色
+	echo -e "\033[31m 倒计时${i}秒 \033[0m"
 	sleep 1
 	done
 	swapon -s
