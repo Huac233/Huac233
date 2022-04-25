@@ -24,7 +24,7 @@ set_swap(){
 	check_root
 	sed -i "s/ResourceDisk.Format=n/ResourceDisk.Format=y/g" /etc/waagent.conf
 	sed -i "s/ResourceDisk.EnableSwap=n/ResourceDisk.EnableSwap=y/g" /etc/waagent.conf
-	sed -i "s/ResourceDisk.SwapSizeMB=0/ResourceDisk.SwapSizeMB=${swapsize}/g" /etc/waagent.conf
+	sed -i "s/ResourceDisk.SwapSizeMB=0/ResourceDisk.SwapSizeMB=$swapsize/g" /etc/waagent.conf
 	service waagent restart
 	swapon -s
 }
