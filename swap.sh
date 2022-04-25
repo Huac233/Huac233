@@ -20,7 +20,7 @@ check_root(){
 # 设置交换分区
 set_swap(){
 	echo -e " 开始设置虚拟内存容量，建议为内存的2倍。但过大的交换分区会影响磁盘IO，请悉知。 "
-	read -p " 请输入需要添加的虚拟内存容量，单位MB: " swap_capacity
+	read -p " 请输入需要添加的虚拟内存容量，单位MB: " swapsize
 	check_root
 	sed -i "s/ResourceDisk.Format=n/ResourceDisk.Format=y/g" /etc/waagent.conf
 	sed -i "s/ResourceDisk.EnableSwap=n/ResourceDisk.EnableSwap=y/g" /etc/waagent.conf
