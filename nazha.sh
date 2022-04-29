@@ -11,7 +11,7 @@ NZ_BASE_PATH="/opt/nezha"
 NZ_DASHBOARD_PATH="${NZ_BASE_PATH}/dashboard"
 NZ_AGENT_PATH="${NZ_BASE_PATH}/agent"
 NZ_AGENT_SERVICE="/etc/systemd/system/nezha-agent.service"
-NZ_VERSION="v0.8.1"
+NZ_VERSION="v0.8.3"
 
 red='\033[0;31m'
 green='\033[0;32m'
@@ -48,8 +48,8 @@ pre_check() {
 
     ## China_IP
     if [[ -z "${CN}" ]]; then
-        if [[ $(curl -m 10 -s https://api.ip.sb/geoip | grep 'China') != "" ]]; then
-            echo "根据ip.sb提供的信息，当前IP可能在中国"
+        if [[ $(curl -m 10 -s https://ipapi.co/json | grep 'China') != "" ]]; then
+            echo "根据ipapi.co提供的信息，当前IP可能在中国"
             read -e -r -p "是否选用中国镜像完成安装? [Y/n] " input
             case $input in
             [yY][eE][sS] | [yY])
@@ -76,7 +76,7 @@ pre_check() {
         Docker_IMG="ghcr.io\/naiba\/nezha-dashboard"
     else
         GITHUB_RAW_URL="cdn.jsdelivr.net/gh/naiba/nezha@master"
-        GITHUB_URL="dn-dao-github-mirror.daocloud.io"
+        GITHUB_URL="hub.fastgit.xyz"
         Get_Docker_URL="get.daocloud.io/docker"
         Get_Docker_Argu=" -s docker --mirror Aliyun"
         Docker_IMG="registry.cn-shanghai.aliyuncs.com\/naibahq\/nezha-dashboard"
@@ -124,8 +124,8 @@ before_show_menu() {
 }
 
 install_base() {
-    (command -v git >/dev/null 2>&1 && command -v curl >/dev/null 2>&1 && command -v wget >/dev/null 2>&1 && command -v tar >/dev/null 2>&1) ||
-        (install_soft curl wget git tar)
+    (command -v git >/dev/null 2>&1 && command -v curl >/dev/null 2>&1 && command -v wget >/dev/null 2>&1 && command -v unzip >/dev/null 2>&1) ||
+        (install_soft curl wget git unzip)
 }
 
 install_soft() {
@@ -200,14 +200,14 @@ install_agent() {
     chmod 777 -R $NZ_AGENT_PATH
 
     echo -e "正在下载监控端"
-    wget -O nezha-agent_linux_${os_arch}.tar.gz https://ghproxy.com/https://${GITHUB_URL}/naiba/nezha/releases/download/${version}/nezha-agent_linux_${os_arch}.tar.gz >/dev/null 2>&1
+    wget -O nezha-agent_linux_${os_arch}.zip https://${GITHUB_URL}/naiba/nezha/releases/download/${version}/nezha-agent_linux_${os_arch}.zip >/dev/null 2>&1
     if [[ $? != 0 ]]; then
         echo -e "${red}Release 下载失败，请检查本机能否连接 ${GITHUB_URL}${plain}"
         return 0
     fi
-    tar xf nezha-agent_linux_${os_arch}.tar.gz &&
+    unzip nezha-agent_linux_${os_arch}.zip &&
         mv nezha-agent $NZ_AGENT_PATH &&
-        rm -rf nezha-agent_linux_${os_arch}.tar.gz README.md
+        rm -rf nezha-agent_linux_${os_arch}.zip README.md
 
     if [ $# -ge 3 ]; then
         modify_agent_config "$@"
@@ -223,7 +223,7 @@ install_agent() {
 modify_agent_config() {
     echo -e "> 修改Agent配置"
 
-    wget -O $NZ_AGENT_SERVICE https://ghproxy.com/https://${GITHUB_RAW_URL}/script/nezha-agent.service >/dev/null 2>&1
+    wget -O $NZ_AGENT_SERVICE https://${GITHUB_RAW_URL}/script/nezha-agent.service >/dev/null 2>&1
     if [[ $? != 0 ]]; then
         echo -e "${red}文件下载失败，请检查本机能否连接 ${GITHUB_RAW_URL}${plain}"
         return 0
