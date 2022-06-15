@@ -1,7 +1,7 @@
 @font-face {
     font-family: nekotora;
     src: url(../fonts/nekotora.eot);
-    src: url(../fonts/nekotora.eot#iefix) format("embedded-opentype"), url(../fonts/nekotora.woff2) format("woff2"), url(../fonts/nekotora.woff) format("woff"), url(../fonts/nekotora.ttf) format("truetype"), url(../images/nekotora.33032896.svg#nekotora) format("svg");
+    src: url(../fonts/nekotora.eot#iefix) format("embedded-opentype"), url(../fonts/nekotora.woff2) format("woff2"), url(../fonts/nekotora.woff) format("woff"), url(../fonts/nekotora.ttf) format("truetype");
     font-weight: 400;
     font-style: normal
 }
